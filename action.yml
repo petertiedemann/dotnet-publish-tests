@@ -1,0 +1,19 @@
+# action.yml
+name: 'dotnet-publish-tests
+description: 'Builds and packages code and publishes tests'
+inputs:
+  frameworks:
+    description: 'Frameworks to publish tests for'
+    required: true
+    default: netcoreapp30
+  test-output:  # id of input
+    description: 'Folder to publish tests to'
+    required: true
+  nuget-output:  # id of input
+    description: 'Folder to packages nugets into'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.location }}
